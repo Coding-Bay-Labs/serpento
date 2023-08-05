@@ -9,6 +9,8 @@ export const env = createEnv({
   server: {
     DATABASE_URL: z.string().url(),
     NODE_ENV: z.enum(["development", "test", "production"]),
+    HYGRAPH_ENDPOINT : z.string().url(),
+    HYGRAPH_TOKEN : z.string(),
   },
 
   /**
@@ -27,7 +29,8 @@ export const env = createEnv({
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    HYGRAPH_ENDPOINT : process.env.HYGRAPH_ENDPOINT,
+    HYGRAPH_TOKEN : process.env.HYGRAPH_TOKEN,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
