@@ -46,6 +46,9 @@ devDependencies:
   '@apollo/client':
     specifier: ^3.7.17
     version: 3.7.17(graphql@16.7.1)(react-dom@18.2.0)(react@18.2.0)
+  '@graphcms/rich-text-html-renderer':
+    specifier: ^0.2.0
+    version: 0.2.0
   '@graphcms/rich-text-types':
     specifier: ^0.5.0
     version: 0.5.0
@@ -186,6 +189,14 @@ packages:
   /@eslint/js@8.40.0:
     resolution: {integrity: sha512-ElyB54bJIhXQYVKjDSvCkPO1iU1tSAeVQJbllWJq1XQSmmA4dgFk8CbiBGpiOPxleE48vDogxCtmMYku4HSVLA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: true
+
+  /@graphcms/rich-text-html-renderer@0.2.0:
+    resolution: {integrity: sha512-kXrHGtNq0yX6p1HgJoLyCgWeK/NlTeSIv++bTXnRv/aZcsSKdIlVG7dj4f21xGxJ1zML2wqJuG8SKUlmDjn1KQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@graphcms/rich-text-types': 0.5.0
+      escape-html: 1.0.3
     dev: true
 
   /@graphcms/rich-text-types@0.5.0:
@@ -1291,6 +1302,10 @@ packages:
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
+    dev: true
+
+  /escape-html@1.0.3:
+    resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
     dev: true
 
   /escape-string-regexp@4.0.0:

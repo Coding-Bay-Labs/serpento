@@ -6,11 +6,12 @@ import {
 } from "next";
 import StatsTable from "@/components/classes/StatsTable";
 import { useState } from "react";
+import HygraphRichText from "@/components/HygraphRichText";
 
 const ClassDetails = ({
   characterClass,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { name } = characterClass;
+  const { name, description } = characterClass;
 
   const [section, setSection] = useState<"features" | "description" | "spells">(
     "features"
@@ -56,6 +57,11 @@ const ClassDetails = ({
             <>
               <StatsTable />
             </>
+          )}
+          {section === "description" && (
+            <div className="p-4">
+              <HygraphRichText content={description.json} />
+            </div>
           )}
         </div>
       </div>
