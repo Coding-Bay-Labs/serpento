@@ -9,20 +9,20 @@ const SideBar = () => {
       <div className="mt-12 flex w-full flex-col">
         <Link
           href="/classes"
-          className={`flex h-14 items-center pl-8 text-xl font-semibold text-white/60 hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
-            pathname === "/classes"
+          className={`flex h-14 items-center pl-8 text-xl font-semibold  hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
+            pathname.includes("/classes")
               ? "text-white/100 shadow-[5px_0_0px_0px_inset_white]"
-              : ""
+              : "text-white/60"
           }`}
         >
           Classes
         </Link>
         <Link
           href="/races"
-          className={`flex h-14 items-center pl-8 text-xl font-semibold text-white/60 hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
+          className={`font-semibol flex h-14 items-center pl-8 text-xl hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
             pathname === "/races"
               ? "text-white/100 shadow-[5px_0_0px_0px_inset_white]"
-              : ""
+              : "text-white/60"
           }`}
         >
           Races
@@ -32,17 +32,17 @@ const SideBar = () => {
           className={`flex h-14 items-center pl-8 text-xl font-semibold text-white/60 hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
             pathname === "/spells"
               ? "text-white/100 shadow-[5px_0_0px_0px_inset_white]"
-              : ""
+              : "text-white/60"
           }`}
         >
           Spells
         </Link>
         <Link
           href="/backgrounds"
-          className={`flex h-14 items-center pl-8 text-xl font-semibold text-white/60 hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
+          className={`flex h-14 items-center pl-8 text-xl font-semibold  hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
             pathname === "/backgrounds"
               ? "text-white/100 shadow-[5px_0_0px_0px_inset_white]"
-              : ""
+              : "text-white/60"
           }`}
         >
           Backgrounds
