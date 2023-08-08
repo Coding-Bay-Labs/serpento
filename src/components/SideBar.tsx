@@ -30,7 +30,7 @@ const SideBar = () => {
         <Link
           href="/spells"
           className={`flex h-14 items-center pl-8 text-xl font-semibold text-white/60 hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
-            pathname === "/spells"
+            pathname.includes("/spells")
               ? "text-white/100 shadow-[5px_0_0px_0px_inset_white]"
               : "text-white/60"
           }`}
