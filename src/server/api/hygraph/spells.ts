@@ -131,7 +131,9 @@ export type HygraphSpell = {
   isAreaOfEffect: boolean | null;
   areaOfEffect: HygraphAreaOfEffect | null;
   reactionCastingTimeDescription: string | null;
-  description: RichTextContent;
+  description: {
+    json: RichTextContent;
+  };
 };
 
 export const getHygraphSpells = async () => {
@@ -139,4 +141,4 @@ export const getHygraphSpells = async () => {
     query: GET_SPELLS,
   });
   return data.spells;
-}
+};
