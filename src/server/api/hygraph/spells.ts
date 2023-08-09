@@ -34,6 +34,10 @@ export const GET_SPELLS = gql`
       description {
         json
       }
+      availableForClasses {
+        id
+        name
+      }
     }
   }
 `;
@@ -47,7 +51,8 @@ export enum HygraphSpellComponent {
 export enum HygraphSpellRangeType {
   Self = "self",
   Touch = "touch",
-  Ranged = "sight",
+  Ranged = "ranged",
+  Sight = "sight",
   Unlimited = "unlimited",
 }
 
@@ -118,7 +123,7 @@ export type HygraphSpell = {
   level: number;
   components: HygraphSpellComponent[];
   materialComponents: string[];
-  rangedDistanceInFeets: number;
+  rangeDistanceInFeets: number;
   rangeType: HygraphSpellRangeType;
   spellSchool: HygraphSpellSchool;
   hasHigherLevelScaling: boolean;
@@ -134,6 +139,11 @@ export type HygraphSpell = {
   description: {
     json: RichTextContent;
   };
+  availableForClasses: {
+    __typename: "Class";
+    id: string;
+    name: string;
+  }[];
 };
 
 export const getHygraphSpells = async () => {
