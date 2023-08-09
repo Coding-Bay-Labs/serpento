@@ -19,7 +19,7 @@ const SideBar = () => {
         </Link>
         <Link
           href="/races"
-          className={`font-semibol flex h-14 items-center pl-8 text-xl hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
+          className={`flex h-14 items-center pl-8 text-xl font-semibold hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
             pathname === "/races"
               ? "text-white/100 shadow-[5px_0_0px_0px_inset_white]"
               : "text-white/60"

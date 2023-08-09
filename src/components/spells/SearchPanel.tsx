@@ -1,4 +1,7 @@
 import { api } from "@/utils/api";
+import { getComponentType } from "@/utils/getComponentType";
+import { getOrdinal } from "@/utils/getOrdinal";
+import { getSchoolName } from "@/utils/getSchool";
 import { useState } from "react";
 import { useCallback } from "react";
 
@@ -63,17 +66,21 @@ const SearchPanel = () => {
               key={spell.id}
               className="rounded-4 flex h-16 rounded-md bg-neutral-800 px-2 py-1"
             >
-              <div className="flex-col">
+              <div className="flex w-full flex-col">
                 <h3 className="text-lg text-white">{spell.name}</h3>
-                <div>
-                  <span className="mr-2 text-white/50">
-                    {spell.level} level,
-                  </span>
-                  <span className="mr-2 text-white/50">
-                    {spell.spellSchool} school,
-                  </span>
-                  <span className="mr-2 text-white/50">
-                    {spell.components.join(", ")}
+                <div className="flex justify-between">
+                  <div>
+                    <span className="text-white/50">
+                      {getOrdinal(spell.level)} level, {""}
+                    </span>
+                    <span className="text-white/50">
+                      {getSchoolName(spell.spellSchool)} {""}
+                    </span>
+                  </div>
+                  <span className=" text-white/50">
+                    {spell.components
+                      .map((c) => getComponentType(c))
+                      .join(", ")}
                   </span>
                 </div>
               </div>
