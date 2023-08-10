@@ -6,7 +6,8 @@ export const spellsRouter = createTRPCRouter({
   search: publicProcedure
     .input(z.object({ searchTerm: z.string() }))
     .query(async (ctx) => {
-      const spells = await getHygraphSpells();
-      return spells.filter(({ name }) => name.includes(ctx.input.searchTerm));
+      return await getHygraphSpells({
+        where: { name_contains: ctx.input.searchTerm },
+      });
     }),
 });

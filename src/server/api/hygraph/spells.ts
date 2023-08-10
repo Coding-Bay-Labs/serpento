@@ -3,8 +3,8 @@ import { type RichTextContent } from "@graphcms/rich-text-types";
 import { client } from "./client";
 
 export const GET_SPELLS = gql`
-  query GetSpells {
-    spells {
+  query GetSpells($where: SpellWhereInput) {
+    spells(where: $where) {
       id
       name
       isRitual
@@ -146,9 +146,18 @@ export type HygraphSpell = {
   }[];
 };
 
-export const getHygraphSpells = async () => {
+type HygraphSpellSearchVariables = {
+  where: {
+    name_contains: string;
+  };
+};
+
+export const getHygraphSpells = async (
+  variables?: HygraphSpellSearchVariables
+) => {
   const { data } = await client.query<{ spells: HygraphSpell[] }>({
     query: GET_SPELLS,
+    variables,
   });
   return data.spells;
 };
