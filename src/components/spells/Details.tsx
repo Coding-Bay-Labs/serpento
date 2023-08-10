@@ -71,7 +71,9 @@ const Details = ({
             <h4 className="font-semibold text-white">Components</h4>
             <span className="text-white">
               {components.map((c) => getComponentType(c)).join(", ")}
-              {materialComponents && ` (${materialComponents.join(", ")})`}
+              {materialComponents.length > 0
+                ? ` (${materialComponents.join(", ")})`
+                : null}
             </span>
           </div>
         </div>
