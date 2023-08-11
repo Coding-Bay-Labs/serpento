@@ -1,10 +1,4 @@
-enum HygraphSpellRangeType {
-  Self = "self",
-  Touch = "touch",
-  Ranged = "ranged",
-  Sight = "sight",
-  Unlimited = "unlimited",
-}
+import { HygraphSpellRangeType } from "../types/spells";
 
 export const getRangeTypeUnits = (rangeType: HygraphSpellRangeType): string => {
   switch (rangeType) {

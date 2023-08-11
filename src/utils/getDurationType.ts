@@ -1,11 +1,4 @@
-enum HygraphDurationType {
-  Concentration = "concentration",
-  Instantaneous = "instantaneous",
-  Special = "special",
-  Time = "time",
-  UntilDispelled = "untilDispelled",
-  UntilDispelledOrTriggered = "untilDispelledOrTriggered",
-}
+import { HygraphDurationType } from "../types/spells";
 
 export const getDurationType = (durationType: HygraphDurationType): string => {
   switch (durationType) {

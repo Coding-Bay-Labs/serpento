@@ -1,13 +1,4 @@
-enum HygraphSpellSchool {
-  Abjuration = "abjuration",
-  Conjuration = "conjuration",
-  Divination = "divination",
-  Enchantment = "enchanmtent",
-  Evocation = "evocation",
-  Illusion = "illusion",
-  Necromancy = "necromancy",
-  Transmutation = "transmutation",
-}
+import { HygraphSpellSchool } from "../types/spells";
 
 export const getSchoolName = (school: HygraphSpellSchool): string => {
   switch (school) {

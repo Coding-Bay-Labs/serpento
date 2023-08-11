@@ -1,4 +1,4 @@
-import { type HygraphSpell } from "@/server/api/hygraph/spells";
+import { type HygraphSpell } from "@/types/spells";
 import { getOrdinal } from "@/utils/getOrdinal";
 import HygraphRichText from "../HygraphRichText";
 import { getSchoolName } from "@/utils/getSchool";

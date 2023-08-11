@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-import { type RichTextContent } from "@graphcms/rich-text-types";
 import { client } from "./client";
+import { type HygraphClass } from "@/types/classes";
 
 export const GET_CLASSES = gql`
   query GetClasses {
@@ -29,35 +29,6 @@ export const GET_CLASSES = gql`
     }
   }
 `;
-
-export type HygraphClass = {
-  __typename: "Class";
-  id: string;
-  name: string;
-  description: {
-    __typename: "ClassDescriptionRichText";
-    json: RichTextContent;
-  };
-  extension: {
-    __typename: "Extension";
-    id: string;
-    name: string;
-  };
-  hpDice: {
-    __typename: "Dice";
-    id: string;
-    facets: number;
-    modifier: number;
-    count: number;
-  };
-  hpScalingCharacteristic: string;
-  listingImage: {
-    __typename: "Asset";
-    url: string;
-    width: number;
-    height: number;
-  };
-};
 
 export const getHygraphClasses = async () => {
   const { data } = await client.query<{ classes: HygraphClass[] }>({
