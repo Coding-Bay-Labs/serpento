@@ -8,8 +8,6 @@ import StatsTable from "@/components/classes/StatsTable";
 import { useState } from "react";
 import HygraphRichText from "@/components/HygraphRichText";
 
-export const runtime = "experimental-edge";
-
 const ClassDetails = ({
   characterClass,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {

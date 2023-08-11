@@ -1,7 +1,5 @@
 import { getFirstSpellId } from "@/server/api/hygraph/spell";
 
-export const runtime = "experimental-edge";
-
 export const Spells = () => null;
 
 export const getServerSideProps = async () => {
