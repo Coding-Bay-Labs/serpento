@@ -33,6 +33,7 @@ export enum HygraphBaseWeaponType {
   Club = "club",
   CrossbowHand = "crossbowHand",
   CrossbowLight = "crossbowLight",
+  CrossbowHeavy = "crossbowHeavy",
   Dagger = "dagger",
   DoubleBladedScimitar = "doubleBladedScimitar",
   Flail = "flail",

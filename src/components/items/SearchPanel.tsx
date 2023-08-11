@@ -1,7 +1,10 @@
+import { HygraphItemType } from "@/types/items";
 import { api } from "@/utils/api";
-import { getComponentType } from "@/utils/getComponentType";
-import { getOrdinal } from "@/utils/getOrdinal";
-import { getSchoolName } from "@/utils/getSchool";
+import { getArmorType } from "@/utils/getBaseArmorType";
+import { getBaseWeaponType } from "@/utils/getBaseWeaponType";
+import { getItemRarity } from "@/utils/getItemRarity";
+import { getItemType } from "@/utils/getItemType";
+import { getMagicItemType } from "@/utils/getMagicItemType";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useCallback } from "react";
@@ -29,9 +32,9 @@ const useSearchItems = () => {
 const SearchPanel = () => {
   const { results, onSearchChange } = useSearchItems();
   const { push } = useRouter();
-  const handleDisplaySpell = (spellId: string) => {
+  const handleDisplayItem = (spellId: string) => {
     return () => {
-      void push(`/spells/${spellId}`);
+      void push(`/items/${spellId}`);
     };
   };
 
@@ -65,7 +68,7 @@ const SearchPanel = () => {
         <input
           onChange={onSearchChange}
           type="text"
-          placeholder="Search spells"
+          placeholder="Search items"
           className="flex h-12 flex-1 rounded-tl-md rounded-tr-md bg-transparent text-white/50 focus:outline-none"
         ></input>
       </div>
@@ -74,7 +77,7 @@ const SearchPanel = () => {
           return (
             <div
               key={item.id}
-              onClick={handleDisplaySpell(item.id)}
+              onClick={handleDisplayItem(item.id)}
               className="rounded-4 mb-2 flex h-16 cursor-pointer rounded-md bg-neutral-800 px-2 py-1"
             >
               <div className="flex w-full flex-col">
@@ -82,14 +85,21 @@ const SearchPanel = () => {
                 <div className="flex justify-between">
                   <div>
                     <span className="text-white/50">
-                      {/* {getOrdinal(item.level)} level, {""} */}
+                      {getItemType(item.itemType, item.magicItemType)}, {""}
                     </span>
                     <span className="text-white/50">
-                      {/* {getSchoolName(item.spellSchool)} {""} */}
+                      {item.itemType === HygraphItemType.Armor &&
+                        item.armorType &&
+                        getArmorType(item.armorType)}
+                      {item.itemType === HygraphItemType.Weapon &&
+                        item.baseWeaponType &&
+                        getBaseWeaponType(item.baseWeaponType)}
+                      {item.magicItemType &&
+                        getMagicItemType(item.magicItemType)}
                     </span>
                   </div>
                   <span className=" text-white/50">
-                    {/* {item.components.map((c) => getComponentType(c)).join(", ")} */}
+                    {getItemRarity(item.rarity)}
                   </span>
                 </div>
               </div>
