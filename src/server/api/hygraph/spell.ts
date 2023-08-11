@@ -9,12 +9,8 @@ export const GET_FIRST_SPELL_ID = gql`
   }
 `;
 
-type HygraphSpellId = {
-  id: string;
-};
-
 export const getFirstSpellId = async () => {
-  const { data } = await client.query<{ spells: HygraphSpellId[] }>({
+  const { data } = await client.query<{ spells: { id: string }[] }>({
     query: GET_FIRST_SPELL_ID,
   });
 

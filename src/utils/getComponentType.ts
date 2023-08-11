@@ -1,8 +1,4 @@
-enum HygraphSpellComponent {
-  Verbal = "verbal",
-  Somatic = "somatic",
-  Material = "material",
-}
+import { HygraphSpellComponent } from "../types/spells";
 
 export const getComponentType = (component: HygraphSpellComponent): string => {
   switch (component) {

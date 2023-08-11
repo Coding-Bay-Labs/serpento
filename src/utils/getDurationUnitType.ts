@@ -1,8 +1,4 @@
-enum HygraphDurationValueUnit {
-  Round = "round",
-  Minute = "minute",
-  Hour = "hour",
-}
+import { HygraphDurationValueUnit } from "../types/spells";
 
 export const getDurationUnitType = (
   duration: number,
