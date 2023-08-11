@@ -7,8 +7,6 @@ import {
   type GetStaticPropsContext,
 } from "next";
 
-export const runtime = "experimental-edge";
-
 const SpellDetails = ({
   spell,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {

@@ -2,8 +2,6 @@ import { getHygraphClasses } from "@/server/api/hygraph/classes";
 import ListingCard from "@/components/classes/ListingCard";
 import { type InferGetStaticPropsType } from "next";
 
-export const runtime = "experimental-edge";
-
 const Classes = ({
   classes,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
