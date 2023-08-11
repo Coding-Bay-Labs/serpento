@@ -1,5 +1,6 @@
 import { type AppType } from "next/app";
 import { api } from "@/utils/api";
+import { Analytics } from "@vercel/analytics/react";
 
 import AppBar from "@/components/AppBar";
 import AppContainer from "@/components/AppContainer";
@@ -15,15 +16,18 @@ const barlowCondensed = Barlow_Condensed({
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <main className={barlowCondensed.className}>
-      <AppBar />
-      <div className="flex">
-        <SideBar />
-        <AppContainer>
-          <Component {...pageProps} />
-        </AppContainer>
-      </div>
-    </main>
+    <>
+      <main className={barlowCondensed.className}>
+        <AppBar />
+        <div className="flex">
+          <SideBar />
+          <AppContainer>
+            <Component {...pageProps} />
+          </AppContainer>
+        </div>
+      </main>
+      <Analytics />
+    </>
   );
 };
 
