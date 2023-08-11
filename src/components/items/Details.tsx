@@ -35,7 +35,7 @@ const Details = ({
       </div>
       <div className="flex-col px-4 py-2">
         <div className="rounded-lg bg-neutral-800">
-          <div className="grid grid-cols-3 border-b border-white/10">
+          <div className="grid grid-cols-3  border-white/10">
             <div className="flex flex-col border-r border-white/10 px-4 py-2">
               <h4 className="font-semibold text-white">Item type</h4>
               <span className="text-white">
