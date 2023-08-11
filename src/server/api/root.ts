@@ -1,6 +1,7 @@
 import { classRouter } from "./routers/classes";
 import { createTRPCRouter } from "@/server/api/trpc";
 import { spellsRouter } from "./routers/spells";
+import { itemsRouter } from "./routers/items";
 
 /**
  * This is the primary router for your server.
@@ -10,6 +11,7 @@ import { spellsRouter } from "./routers/spells";
 export const appRouter = createTRPCRouter({
   classes: classRouter,
   spells: spellsRouter,
+  items: itemsRouter,
 });
 
 // export type definition of API

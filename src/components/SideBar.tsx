@@ -39,7 +39,7 @@ const SideBar = () => {
         </Link>
         <Link
           href="/backgrounds"
-          className={`flex h-14 items-center pl-8 text-xl font-semibold  hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
+          className={`flex h-14 items-center pl-8 text-xl font-semibold hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
             pathname === "/backgrounds"
               ? "text-white/100 shadow-[5px_0_0px_0px_inset_white]"
               : "text-white/60"
@@ -49,10 +49,10 @@ const SideBar = () => {
         </Link>
         <Link
           href="/items"
-          className={`flex h-14 items-center pl-8 text-xl font-semibold text-white/60 hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
-            pathname === "/items"
+          className={`flex h-14 items-center pl-8 text-xl font-semibold hover:text-white/100 hover:shadow-[5px_0_0px_0px_inset_white] ${
+            pathname.includes("/items")
               ? "text-white/100 shadow-[5px_0_0px_0px_inset_white]"
-              : ""
+              : "text-white/60"
           }`}
         >
           Items
