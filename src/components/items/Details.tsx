@@ -1,20 +1,16 @@
 import { HygraphItemType, type HygraphItem } from "@/types/items";
 import HygraphRichText from "../HygraphRichText";
-import { getItemType } from "@/utils/getItemType";
 import { getItemRarity } from "@/utils/getItemRarity";
-import { getArmorType } from "@/utils/getBaseArmorType";
-import { getBaseWeaponType } from "@/utils/getBaseWeaponType";
-import { getMagicItemType } from "@/utils/getMagicItemType";
 
 const Details = ({
   item: {
     name,
+    costInGold,
+    weightInPounds,
     description,
     itemType,
-    magicItemType,
-    rarity,
-    baseWeaponType,
-    armorType,
+    itemDetails,
+    baseItem,
   },
 }: {
   item: HygraphItem;
@@ -24,13 +20,15 @@ const Details = ({
       <div className="flex h-12 w-full items-center justify-between rounded-tl-md rounded-tr-md bg-stone-800 px-4">
         <h2 className="text-lg text-white">{name}</h2>
         <div>
-          <span className="font-semibold text-white">
-            {getItemType(itemType, magicItemType)}
-          </span>
-          <span className="font-semibold text-white/50"> • </span>
-          <span className="font-semibold text-white">
-            {getItemRarity(rarity)}
-          </span>
+          <span className="font-semibold text-white">{itemType.name}</span>
+          {itemDetails.magicItemFields && (
+            <>
+              <span className="font-semibold text-white/50"> • </span>
+              <span className="font-semibold text-white">
+                {getItemRarity(itemDetails.magicItemFields.rarity)}
+              </span>
+            </>
+          )}
         </div>
       </div>
       <div className="flex-col px-4 py-2">
@@ -38,28 +36,40 @@ const Details = ({
           <div className="grid grid-cols-3  border-white/10">
             <div className="flex flex-col border-r border-white/10 px-4 py-2">
               <h4 className="font-semibold text-white">Item type</h4>
-              <span className="text-white">
-                {getItemType(itemType, magicItemType)}
-              </span>
+              <span className="text-white">{itemType.name}</span>
             </div>
-            <div className="flex flex-col border-r border-white/10 px-4 py-2">
-              <h4 className="font-semibold text-white">
-                {itemType === HygraphItemType.Armor && "Armor type"}
-                {itemType === HygraphItemType.Weapon && "Weapon type"}
-                {magicItemType && "Magic item type"}
-              </h4>
-              <span className="text-white">
-                {itemType === HygraphItemType.Armor && getArmorType(armorType)}
-                {itemType === HygraphItemType.Weapon &&
-                  baseWeaponType &&
-                  getBaseWeaponType(baseWeaponType)}
-                {magicItemType && getMagicItemType(magicItemType)}
-              </span>
-            </div>
-            <div className="flex flex-col px-4 py-2">
-              <h4 className="font-semibold text-white">Rarity</h4>
-              <span className="text-white">{getItemRarity(rarity)}</span>
-            </div>
+
+            {baseItem && (
+              <div className="flex flex-col border-r border-white/10 px-4 py-2">
+                <h4 className="font-semibold text-white">
+                  {itemType.type === HygraphItemType.Armor && "Armor type"}
+                  {itemType.type === HygraphItemType.Weapon && "Weapon type"}
+                </h4>
+                <span className="text-white">{baseItem?.name}</span>
+              </div>
+            )}
+
+            {!baseItem && (
+              <>
+                <div className="flex flex-col border-r border-white/10 px-4 py-2">
+                  <h4 className="font-semibold text-white">Cost</h4>
+                  <span className="text-white">{costInGold} GP</span>
+                </div>
+                <div className="flex flex-col border-white/10 px-4 py-2">
+                  <h4 className="font-semibold text-white">Weight</h4>
+                  <span className="text-white">{weightInPounds} lbs</span>
+                </div>
+              </>
+            )}
+
+            {itemDetails.magicItemFields && (
+              <div className="flex flex-col px-4 py-2">
+                <h4 className="font-semibold text-white">Rarity</h4>
+                <span className="text-white">
+                  {getItemRarity(itemDetails.magicItemFields.rarity)}
+                </span>
+              </div>
+            )}
           </div>
         </div>
         <HygraphRichText content={description.json} />
