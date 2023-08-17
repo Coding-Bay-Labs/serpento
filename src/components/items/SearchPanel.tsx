@@ -1,10 +1,5 @@
-import { HygraphItemType } from "@/types/items";
 import { api } from "@/utils/api";
-import { getArmorType } from "@/utils/getBaseArmorType";
-import { getBaseWeaponType } from "@/utils/getBaseWeaponType";
 import { getItemRarity } from "@/utils/getItemRarity";
-import { getItemType } from "@/utils/getItemType";
-import { getMagicItemType } from "@/utils/getMagicItemType";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useCallback } from "react";
@@ -84,23 +79,18 @@ const SearchPanel = () => {
                 <h3 className="text-lg text-white">{item.name}</h3>
                 <div className="flex justify-between">
                   <div>
-                    <span className="text-white/50">
-                      {getItemType(item.itemType, item.magicItemType)}, {""}
-                    </span>
-                    <span className="text-white/50">
-                      {item.itemType === HygraphItemType.Armor &&
-                        item.armorType &&
-                        getArmorType(item.armorType)}
-                      {item.itemType === HygraphItemType.Weapon &&
-                        item.baseWeaponType &&
-                        getBaseWeaponType(item.baseWeaponType)}
-                      {item.magicItemType &&
-                        getMagicItemType(item.magicItemType)}
-                    </span>
+                    <span className="text-white/50">{item.itemType.name}</span>
+                    {item.baseItem && (
+                      <span className="text-white/50">
+                        {""}, {item.baseItem.name}
+                      </span>
+                    )}
                   </div>
-                  <span className=" text-white/50">
-                    {getItemRarity(item.rarity)}
-                  </span>
+                  {item.itemDetails.magicItemFields && (
+                    <span className="text-white/50">
+                      {getItemRarity(item.itemDetails.magicItemFields.rarity)}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import { type RichTextContent } from "@graphcms/rich-text-types";
+import { type HygraphModifier } from "./modifier";
 
 export enum HygraphItemType {
   Armor = "armor",
@@ -89,29 +90,59 @@ export enum HygraphArmorDexterityBonusType {
   Static = "static",
 }
 
+export type HygraphMagicItemFields = {
+  fieldsType: "magic";
+  isMagicItem: true;
+  rarity: HygraphItemRarityType;
+  isAttunementRequired: boolean | null;
+  attunementDescription: string | null;
+};
+
+export type HygraphWeaponFields = {
+  fieldsType: "weapon";
+  weaponProperties: {
+    id: string;
+    name: string;
+    type: "heavy" | "light" | "reach";
+  }[];
+  modifier: HygraphModifier | null;
+};
+
+export type HygraphArmorFields = {
+  fieldsType: "armor";
+  armorType: HygraphBaseArmorType;
+  acDexterityBonusType: HygraphArmorDexterityBonusType;
+  acDexterityModifier: number | null;
+  acStaticBonus: number | null;
+  dexterityModifierCap: number | null;
+  doffing: string | null;
+  donning: string | null;
+  minimumStrengthRequirement: number | null;
+  stealthDisadvantage: boolean | null;
+};
+
+export type HygraphItemDetails =
+  | HygraphWeaponFields
+  | HygraphMagicItemFields
+  | HygraphArmorFields;
+
 export type HygraphItem = {
   __typename: "Item";
   id: string;
   name: string;
-  rarity: HygraphItemRarityType;
-  itemType: HygraphItemType;
-  magicItemType: HygraphMagicItemType | null;
-  armorType: HygraphBaseArmorType | null;
-  baseWeaponType: HygraphBaseWeaponType | null;
-  dexterityBonusType: HygraphArmorDexterityBonusType;
-  dexterityBonusStatic: number;
-  minStrengthRequirement: number;
-  isStealthCheckRequired: boolean;
-  isAttunementRequired: boolean;
-  attunementDescription: string | null;
-  listingImage: {
-    __typename: "Asset";
-    url: string;
-    width: number;
-    height: number;
-  };
   description: {
-    __typename: "ItemDescriptionRichText";
     json: RichTextContent;
+  };
+  costInGold: number;
+  weightInPounds: number | null;
+  itemType: {
+    name: string;
+    type: "weapon" | "armor" | "item";
+  };
+  baseItem: { id: string; name: string } | null;
+  itemDetails: {
+    magicItemFields: HygraphMagicItemFields | null;
+    weaponFields: HygraphWeaponFields | null;
+    armorFields: HygraphArmorFields | null;
   };
 };
