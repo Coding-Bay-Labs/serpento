@@ -72,7 +72,10 @@ const Details = ({
             )}
           </div>
         </div>
-        <HygraphRichText content={description.json} />
+
+        <div className="mt-4 flex w-full flex-col">
+          <HygraphRichText content={description.json} />
+        </div>
       </div>
     </div>
   );
