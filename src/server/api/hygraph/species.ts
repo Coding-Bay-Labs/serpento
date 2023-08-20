@@ -116,8 +116,24 @@ const GET_SPECIES = gql`
 `;
 
 export const getHygraphSpecies = async () => {
-  const { data } = await client.query<{ speciesList: HygraphSpecies }>({
+  const { data } = await client.query<{ speciesList: HygraphSpecies[] }>({
     query: GET_SPECIES,
   });
   return data.speciesList;
+};
+
+export const GET_FIRST_SPECIES_ID = gql`
+  query GetFirstSpeciesId {
+    speciesList {
+      id
+    }
+  }
+`;
+
+export const getFirstSpeciesId = async () => {
+  const { data } = await client.query<{ speciesList: { id: string }[] }>({
+    query: GET_FIRST_SPECIES_ID,
+  });
+
+  return data.speciesList[0]?.id;
 };
