@@ -36,8 +36,8 @@ const SearchPanel = ({ speciesList }: { speciesList: HygraphSpecies[] }) => {
             d="m19 19-3.5-3.5"
             stroke="#8B8B8B"
             stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></path>
           <circle
             cx="11"
@@ -45,8 +45,8 @@ const SearchPanel = ({ speciesList }: { speciesList: HygraphSpecies[] }) => {
             r="6"
             stroke="#8B8B8B"
             stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></circle>
         </svg>
         <input
