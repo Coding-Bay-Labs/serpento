@@ -1,17 +1,8 @@
-import { api } from "@/utils/api";
-import { getComponentType } from "@/utils/getComponentType";
-import { getOrdinal } from "@/utils/getOrdinal";
-import { getSchoolName } from "@/utils/getSchool";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useCallback } from "react";
+import { useState, useCallback } from "react";
+import { type HygraphBackground } from "@/types/backgrounds";
 
-const useSearchSpells = () => {
+const useSpeciesSearch = (backgroundsList: HygraphBackground[]) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const { data = [] } = api.spells.search.useQuery(
-    { searchTerm },
-    { keepPreviousData: true }
-  );
 
   const onSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,19 +12,19 @@ const useSearchSpells = () => {
   );
 
   return {
-    results: data,
+    results: backgroundsList.filter((species) =>
+      species.name.toLowerCase().includes(searchTerm.toLowerCase())
+    ),
     onSearchChange,
   };
 };
 
-const SearchPanel = () => {
-  const { results, onSearchChange } = useSearchSpells();
-  const { push } = useRouter();
-  const handleDisplaySpell = (spellId: string) => {
-    return () => {
-      void push(`/spells/${spellId}`);
-    };
-  };
+const SearchPanel = ({
+  backgroundsList,
+}: {
+  backgroundsList: HygraphBackground[];
+}) => {
+  const { results, onSearchChange } = useSpeciesSearch(backgroundsList);
 
   return (
     <div className="h-[calc(100vh-14rem)] w-96 flex-col rounded-md bg-stone-900">
@@ -65,33 +56,22 @@ const SearchPanel = () => {
         <input
           onChange={onSearchChange}
           type="text"
-          placeholder="Search spells"
+          placeholder="Search backgrounds"
           className="flex h-12 flex-1 rounded-tl-md rounded-tr-md bg-transparent text-white/50 focus:outline-none"
         ></input>
       </div>
       <div className="flex-col px-4 py-2">
-        {results.map((spell) => {
+        {results.map((background) => {
           return (
             <div
-              key={spell.id}
-              onClick={handleDisplaySpell(spell.id)}
+              key={background.id}
               className="rounded-4 mb-2 flex h-16 cursor-pointer rounded-md bg-neutral-800 px-2 py-1"
             >
               <div className="flex w-full flex-col">
-                <h3 className="text-lg text-white">{spell.name}</h3>
+                <h3 className="text-lg text-white">{background.name}</h3>
                 <div className="flex justify-between">
-                  <div>
-                    <span className="text-white/50">
-                      {getOrdinal(spell.level)} level, {""}
-                    </span>
-                    <span className="text-white/50">
-                      {getSchoolName(spell.spellSchool)} {""}
-                    </span>
-                  </div>
-                  <span className=" text-white/50">
-                    {spell.components
-                      .map((c) => getComponentType(c))
-                      .join(", ")}
+                  <span className="text-white/50">
+                    {background.primaryFeatureName}
                   </span>
                 </div>
               </div>
