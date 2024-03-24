@@ -1,3 +1,5 @@
+'use client';
+
 import { type HygraphSpell } from "@/types/spells";
 import { getOrdinal } from "@/utils/getOrdinal";
 import HygraphRichText from "../HygraphRichText";

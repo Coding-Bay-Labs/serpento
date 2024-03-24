@@ -1,3 +1,5 @@
+'use client';
+
 import { api } from "@/utils/api";
 import { getComponentType } from "@/utils/getComponentType";
 import { getOrdinal } from "@/utils/getOrdinal";
