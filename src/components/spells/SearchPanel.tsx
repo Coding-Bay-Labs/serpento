@@ -4,7 +4,7 @@ import { api } from "@/utils/api";
 import { getComponentType } from "@/utils/getComponentType";
 import { getOrdinal } from "@/utils/getOrdinal";
 import { getSchoolName } from "@/utils/getSchool";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useCallback } from "react";
 
@@ -27,10 +27,10 @@ const useSearchSpells = () => {
 
 const SearchPanel = () => {
   const { results, onSearchChange } = useSearchSpells();
-  const { push } = useRouter();
+  const router = useRouter();
   const handleDisplaySpell = (spellId: string) => {
     return () => {
-      void push(`/spells/${spellId}`);
+      void router.push(`/spells/${spellId}`);
     };
   };
 
