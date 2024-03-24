@@ -19,7 +19,8 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+    NEXT_PUBLIC_POSTHOG_KEY : z.string(),
+    NEXT_PUBLIC_POSTHOG_HOST : z.string().optional(),
   },
 
   /**
@@ -31,6 +32,8 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     HYGRAPH_ENDPOINT : process.env.HYGRAPH_ENDPOINT,
     HYGRAPH_TOKEN : process.env.HYGRAPH_TOKEN,
+    NEXT_PUBLIC_POSTHOG_HOST : process.env.NEXT_PUBLIC_POSTHOG_HOST,
+    NEXT_PUBLIC_POSTHOG_KEY : process.env.NEXT_PUBLIC_POSTHOG_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
