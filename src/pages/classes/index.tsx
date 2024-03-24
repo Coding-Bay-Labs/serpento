@@ -14,7 +14,7 @@ const Classes = ({
             key={id}
             id={id}
             name={name}
-            imageUrl={listingImage.url}
+            imageUrl={listingImage?.url}
             source={{ name: extension.name }}
           />
         ))}
