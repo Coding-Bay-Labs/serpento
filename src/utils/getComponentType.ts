@@ -1,6 +1,6 @@
 import { HygraphSpellComponent } from "../types/spells";
 
-export const getComponentType = (component: HygraphSpellComponent): string => {
+export const getComponentType = (component: string): string => {
   switch (component) {
     case HygraphSpellComponent.Verbal:
       return "Verbal";

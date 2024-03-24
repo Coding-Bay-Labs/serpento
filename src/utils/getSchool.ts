@@ -1,6 +1,6 @@
 import { HygraphSpellSchool } from "../types/spells";
 
-export const getSchoolName = (school: HygraphSpellSchool): string => {
+export const getSchoolName = (school: string): string => {
   switch (school) {
     case HygraphSpellSchool.Abjuration:
       return "Abjuration";

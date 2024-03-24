@@ -10,10 +10,7 @@ import { useCallback } from "react";
 
 const useSearchSpells = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const { data = [] } = api.spells.search.useQuery(
-    { searchTerm },
-    { keepPreviousData: true }
-  );
+  const data = [{ id: "1", name: "Fireball", level: 3, spellSchool: "evocation", components: ["V", "S", "M"] }];
 
   const onSearchChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
