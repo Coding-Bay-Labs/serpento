@@ -1,22 +1,15 @@
 import { getFirstSpellId } from "@/server/api/hygraph/spell";
+import Details from "@/components/spells/Details";
+import SearchPanel from "@/components/spells/SearchPanel";
 
-export const Spells = () => null;
-
-export const getServerSideProps = async () => {
-  const firstSpellId = await getFirstSpellId();
-
-  if (firstSpellId) {
-    return {
-      redirect: {
-        destination: `/spells/${firstSpellId}`,
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
-
-export default Spells;
+export const Spells = async () => {
+  const spellId = await getFirstSpellId();
+  return (
+    <>
+      <h1 className="text-3xl font-semibold text-white">Spells</h1>
+      <div className="mt-8 flex">
+        <SearchPanel />
+      </div>
+    </>
+  );
+}
