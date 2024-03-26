@@ -35,7 +35,7 @@ const SearchPanel = ({ speciesList }: { speciesList: HygraphSpecies[] }) => {
           <path
             d="m19 19-3.5-3.5"
             stroke="#8B8B8B"
-            stroke-width="2"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           ></path>
@@ -44,7 +44,7 @@ const SearchPanel = ({ speciesList }: { speciesList: HygraphSpecies[] }) => {
             cy="11"
             r="6"
             stroke="#8B8B8B"
-            stroke-width="2"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           ></circle>
