@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SignInButton, UserButton, SignedOut } from "@clerk/nextjs"
 
 const AppBar = () => {
   return (
@@ -11,6 +12,11 @@ const AppBar = () => {
         className="mr-6"
       />
       <Image src="/img/logo.svg" width={106} height={38} alt="Serpento" />
+
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <span className="ml-auto"><UserButton  /></span>
     </nav>
   );
 };

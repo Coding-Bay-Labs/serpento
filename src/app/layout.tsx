@@ -2,6 +2,8 @@ import { CSPostHogProvider } from "./provider";
 import AppContainer from "@/components/AppContainer";
 import AppBar from "@/components/AppBar";
 import SideBar from "@/components/SideBar";
+import { ClerkProvider } from "@clerk/nextjs";
+
 
 import "./globals.css";
 
@@ -12,6 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <ClerkProvider>
       <CSPostHogProvider>
         <body>
           <AppBar />
@@ -21,6 +24,7 @@ export default function RootLayout({
           </div>
         </body>
       </CSPostHogProvider>
+      </ClerkProvider>
     </html>
   );
 }
