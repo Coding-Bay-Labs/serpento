@@ -1,5 +1,6 @@
 import { type AppType } from "next/app";
 import { api } from "@/utils/api";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import AppBar from "@/components/AppBar";
 import AppContainer from "@/components/AppContainer";
@@ -17,6 +18,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <>
       <main className={barlowCondensed.className}>
+        <ClerkProvider>
         <AppBar />
         <div className="flex">
           <SideBar />
@@ -24,6 +26,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
             <Component {...pageProps} />
           </AppContainer>
         </div>
+        </ClerkProvider>
       </main>
     </>
   );
