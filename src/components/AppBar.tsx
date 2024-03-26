@@ -13,10 +13,14 @@ const AppBar = () => {
       />
       <Image src="/img/logo.svg" width={106} height={38} alt="Serpento" />
 
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
-      <span className="ml-auto"><UserButton  /></span>
+      <span className="ml-auto">
+        <SignedOut>
+          <SignInButton mode="modal">
+            <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+          </SignInButton>
+        </SignedOut>
+        <UserButton  />
+      </span>
     </nav>
   );
 };
