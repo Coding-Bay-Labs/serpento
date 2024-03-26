@@ -1,6 +1,5 @@
 import { type AppType } from "next/app";
 import { api } from "@/utils/api";
-import { Analytics } from "@vercel/analytics/react";
 
 import AppBar from "@/components/AppBar";
 import AppContainer from "@/components/AppContainer";
@@ -26,7 +25,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           </AppContainer>
         </div>
       </main>
-      <Analytics />
     </>
   );
 };
